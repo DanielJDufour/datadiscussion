@@ -16,6 +16,13 @@ libpq-dev and postgresql-server-dev-X.Y are needed in order to install psycopg2 
 sudo apt-get install -y postgresql libpq-dev postgresql-server-dev-all
 ```
 
+####Create Database
+You will now create the databse that the Django app will use.  The database is called datadiscussion.
+```
+sudo -u postgres createdb datadiscussion;
+```
+
+
 ###Install Pyton
 It might already be installed.  If that's so, no worries.
 ```
