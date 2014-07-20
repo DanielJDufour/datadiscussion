@@ -12,14 +12,21 @@ sudo apt-get install -y curl vim git
 
 ####Install PostgreSQL
 ```
-sudo apt-get install -y postgresql
+sudo apt-get install -y postgresql libpq-dev
 ```
 
 ###Install Pyton
 It might already be installed.  If that's so, no worries.
 ```
-sudo apt-get install python;
+sudo apt-get install python python-dev;
 ```
+
+###Install Psycopg
+Psycopg is a PostgreSQL database adapater for Python
+```
+
+```
+
 
 ####Download Django
 The following code will download the django code into the current user's home directory. 
