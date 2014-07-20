@@ -20,7 +20,7 @@ git clone http://github.com/django/django.git ~/django-trunk
 ####Download Pip
 Pip will be used to make the django code importable into Python
 ```
-sudo apt-get install python-pip
+sudo apt-get -y install python-pip
 ```
 
 
