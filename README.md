@@ -1,4 +1,9 @@
-datadiscussion
-==============
+Installation Guide
 
-Data Discussion Django App for sharing data, links to external data and discussing it
+```
+sudo apt-get update;
+sudo apt-get install -y curl vim git;
+sudo apt-get install -y postgresql;
+sudo -u postgres createuser --pwprompt --createdb --login --echo datadiscussion;
+```
+
