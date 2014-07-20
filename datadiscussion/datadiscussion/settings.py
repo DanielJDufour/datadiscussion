@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'datadiscussion.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'data discussion database',
+        'NAME': 'datadiscussion',
     }
 }
 
