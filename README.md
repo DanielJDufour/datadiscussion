@@ -63,3 +63,8 @@ The following command creates the tables needed by the INSTALLED_APPS found in ~
 ```
 sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py migrate
 ```
+
+####Run the Development Server
+```
+sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py runserver
+```
