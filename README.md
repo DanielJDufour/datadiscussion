@@ -14,7 +14,7 @@ sudo apt-get install python;
 
 ####Download Django
 ```
-git clone http://github.com/django/django.git django-trunk ~/django
+git clone http://github.com/django/django.git ~/django-trunk
 ```
 
 
