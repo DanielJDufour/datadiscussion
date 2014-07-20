@@ -19,7 +19,7 @@ sudo apt-get install -y postgresql libpq-dev postgresql-server-dev-all
 ###Install Pyton
 It might already be installed.  If that's so, no worries.
 ```
-sudo apt-get install python python-dev;
+sudo apt-get -y install python python-dev;
 ```
 
 ####Download Pip
