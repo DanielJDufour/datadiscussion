@@ -11,6 +11,7 @@ sudo apt-get install -y curl vim git
 ```
 
 ####Install PostgreSQL
+libpq-dev and postgresql-server-dev-X.Y are needed in order to install psycopg2 later
 ```
 sudo apt-get install -y postgresql libpq-dev postgresql-server-dev-X.Y
 ```
