@@ -58,7 +58,7 @@ sudo pip install -e ~/django-trunk/
 git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
 ```
 
-####Create Database Tables
+####Create Database (db) Tables
 ```
-sudo ~/datadiscussion/datadiscussion/python manage.py migrate
+sudo python ~/datadiscussion/datadiscussion/python manage.py migrate
 ```
