@@ -45,3 +45,8 @@ Make Django code importable into Python with the following
 ```
 sudo pip install -e ~/django-trunk/
 ```
+
+####Download This Repo
+```
+git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
+```
