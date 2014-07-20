@@ -12,7 +12,7 @@ sudo apt-get install -y curl vim git
 
 ####Install PostgreSQL
 ```
-sudo apt-get install -y postgresql libpq-dev
+sudo apt-get install -y postgresql libpq-dev postgresql-server-dev-X.Y
 ```
 
 ###Install Pyton
