@@ -60,5 +60,5 @@ git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
 
 ####Create Database (db) Tables
 ```
-sudo python ~/datadiscussion/datadiscussion/python manage.py migrate
+sudo python ~/datadiscussion/datadiscussion/manage.py migrate
 ```
