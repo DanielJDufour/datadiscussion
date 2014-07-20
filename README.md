@@ -24,7 +24,7 @@ sudo apt-get install python python-dev;
 ###Install Psycopg
 Psycopg is a PostgreSQL database adapater for Python
 ```
-pip install psycopg2;
+sudo pip install psycopg2;
 ```
 
 
