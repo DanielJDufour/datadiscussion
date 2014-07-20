@@ -59,6 +59,7 @@ git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
 ```
 
 ####Create Database (db) Tables
+The following command creates the tables needed by the INSTALLED_APPS found in ~/datadiscussion/datadiscussion/datadiscussion/settings.py.
 ```
 sudo python ~/datadiscussion/datadiscussion/manage.py migrate
 ```
