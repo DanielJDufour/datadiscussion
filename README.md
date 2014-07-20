@@ -22,23 +22,22 @@ It might already be installed.  If that's so, no worries.
 sudo apt-get install python python-dev;
 ```
 
+####Download Pip
+Pip will be used to make the django code importable into Python
+```
+sudo apt-get -y install python-pip
+```
+
 ###Install Psycopg
 Psycopg is a PostgreSQL database adapater for Python
 ```
 sudo pip install psycopg2;
 ```
 
-
 ####Download Django
 The following code will download the django code into the current user's home directory. 
 ```
 git clone http://github.com/django/django.git ~/django-trunk
-```
-
-####Download Pip
-Pip will be used to make the django code importable into Python
-```
-sudo apt-get -y install python-pip
 ```
 
 ####Make Django Code Importable
