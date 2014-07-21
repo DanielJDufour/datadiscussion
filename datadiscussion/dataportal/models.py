@@ -5,7 +5,7 @@ class Dataset(models.Model):
   source_en = models.CharField(max_length=200)
   hyperlink_en = models.URLField(max_length=200)
   theme_en = models.CharField(max_length=200)
-  format_en = models.CharField(max_length=200)
+  type_en = models.CharField(max_length=200)
   frequency = models.CharField(max_length=200)
   strengths_en = models.CharField(max_length=200)
   weaknesses_en = models.CharField(max_length=200)
