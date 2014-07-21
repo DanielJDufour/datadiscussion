@@ -59,7 +59,12 @@ git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
 ```
 
 ####Create Database (db) Tables
-The following command creates the tables needed by the INSTALLED_APPS found in ~/datadiscussion/datadiscussion/datadiscussion/settings.py.
+The following command creates the tables needed by the INSTALLED_APPS found in ~/datadiscussion/datadiscussion/datadiscussion/settings.py.  ```sudo -u postgres``` makes it so you run the command as the postgres user, which has a role to access the database. 
 ```
-sudo python ~/datadiscussion/datadiscussion/manage.py migrate
+sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py migrate
+```
+
+####Run the Development Server
+```
+sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py runserver
 ```
