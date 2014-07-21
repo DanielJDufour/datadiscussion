@@ -4,6 +4,6 @@ from dataportal import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^$view', views.view, name='view'),
-    url(r'^$submit', views.submit, name='submit'),
+    url('view', views.view, name='view'),
+    url('submit', views.submit, name='submit'),
 ]
