@@ -13,6 +13,8 @@ class Dataset(models.Model):
   weaknesses_en = models.CharField(max_length=200)
   downloadable = models.NullBooleanField()
   last_updated = models.DateTimeField()
+  def __str__(self):
+    return self.title_en  
 
 class Twitter(models.Model):
   dataset = models.ForeignKey(Dataset)
