@@ -70,7 +70,9 @@ sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py runserver
 ```
 
 ####Create Admin User
-The following command will prompt you for a username and email address.  Enter ```admin``` as username and enter your email address.
+The following command will prompt you for a username and email address.
+Enter ```admin``` as username and enter your email address.
+And enter your password twice.
 ```
 sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py createsuperuser;
 ```
