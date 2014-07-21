@@ -7,7 +7,7 @@ def index(request):
   return HttpResponse("Hello.  You're at the data discussion index.")
 
 def view(request):
-    return HttpResponse("Hello.  You're at the view data page.")
+  return HttpResponse("Hello.  You're at the view data page.")
 
 def submit(request):
-    return HttpResponse("Hello.  You're at the submit data page.")
+  return HttpResponse("Hello.  You're at the submit data page.")
