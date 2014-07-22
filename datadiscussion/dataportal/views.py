@@ -6,7 +6,7 @@ from django.template import RequestContext, loader, Context
 
 
 def index(request):
-    return render(request, 'dataportal/index.html', {"topic": hyrule})
+    return render(request, 'dataportal/index.html', {'topic': 'hyrule'})
 
 def view(request):
   return HttpResponse("Hello.  You're at the view data page.")
