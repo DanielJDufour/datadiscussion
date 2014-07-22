@@ -1,6 +1,7 @@
 from django.contrib import admin
-from dataportal.models import Dataset, Twitter, Facebook, GIS
+from dataportal.models import SiteInfo, Dataset, Twitter, Facebook, GIS
 
+admin.site.register(SiteInfo)
 admin.site.register(Dataset)
 admin.site.register(Twitter)
 admin.site.register(Facebook)
