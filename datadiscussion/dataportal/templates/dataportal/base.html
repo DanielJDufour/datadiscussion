@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ topic }}Data Discussion</title>
+		<link type = "text/css" rel = "stylesheet" href = "style.css"/>
+		<link rel = "icon" type = "image/ico" href="logo.ico"/>
+		<!-- Prevents Mobile Device from Shrinking Text -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!-- Adding Google Analytics-->
+        </head>
+        <body>
+        {% include "header.html" %}
+        <div id = "middle">
+                {% block content %}
+                {% endblock %}
+	</div>
+        {% include "footer.html" %}
+	</body>
+</html>
