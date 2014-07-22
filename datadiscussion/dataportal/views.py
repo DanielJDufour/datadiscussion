@@ -7,7 +7,7 @@ from dataportal.models import SiteInfo
 
 
 def index(request):
-    topic = SiteInfo.topic
+    topic = SiteInfo.objects.all()[0].topic
     return render(request, 'dataportal/index.html', {'topic': topic})
 
 def view(request):
