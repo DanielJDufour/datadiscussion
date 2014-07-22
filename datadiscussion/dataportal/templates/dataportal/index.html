@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>{{ topic }}Data Discussion</title>
-		<link type = "text/css" rel = "stylesheet" href = "style.css"/>
-		<link rel = "icon" type = "image/ico" href="logo.ico"/>
-		<!-- Prevents Mobile Device from Shrinking Text -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<!-- Adding Google Analytics-->
-    </head>
-	<body>
-        <header>
-            
-        </header>
+{% extends "base.html" %}
+{% block content %}
 		<div id = "middle">
 			<div id = "content-all">
 				<p>Welcome to <b>{{ topic }} Data Discussion</b>, an online space for people to share links to public data on {{ topic }} and to discuss the advantages and disadvantages of different datasets.</p>
@@ -23,6 +11,4 @@
 				<p>If you have feedback or want to join the team, email us at <a href = "mailto:hello@"><b>hello@</b></a>.
 			</div>
 		</div>
-		{% extends "footer.html" %}
-	</body>
-</html>
+{% endblock %}
