@@ -51,13 +51,13 @@ def register(request):
     })
  
     return render_to_response(
-    'registration/register.html',
+    'register.html',
     variables,
     )
  
 def register_success(request):
     return render_to_response(
-    'registration/success.html',
+    'success.html',
     )
  
 def logout_page(request):
