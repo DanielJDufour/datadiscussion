@@ -15,6 +15,9 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
 from dataportal.models import UserProfile, UserForm, UserProfileForm, SiteInfo
 
+def test(request):
+    return render(request, 'dataportal/submit.html')
+
 
 def index(request):
     topic = SiteInfo.objects.all()[0].topic
