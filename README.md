@@ -77,3 +77,5 @@ And enter your password twice.
 ```
 sudo -u postgres python ~/datadiscussion/datadiscussion/manage.py createsuperuser;
 ```
+
+####Add Site Topic and Background Image
