@@ -16,7 +16,7 @@ from django.template import RequestContext, loader, Context
 from dataportal.models import UserProfile, UserForm, UserProfileForm, SiteInfo
 
 def test(request):
-    return render(request, 'dataportal/submit.html')
+    return render(request, 'dataportal/test.html')
 
 
 def index(request):
