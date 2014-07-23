@@ -22,6 +22,4 @@ urlpatterns = [
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'), # If user is not login it will redirect to login page
     url(r'^register/$', register),
     url(r'^register/success/$', register_success),
-)
-    
 ]
