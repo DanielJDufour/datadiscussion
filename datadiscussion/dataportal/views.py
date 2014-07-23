@@ -1,52 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
-from dataportal.models import SiteInfo
-
-
-from dataportal.forms import UserForm, UserProfileForm
-from dataportal.forms import CategoryForm
-
-def add_category(request):
-    # Get the context from the request.
-    context = RequestContext(request)
-
-    # A HTTP POST?
-    if request.method == 'POST':
-        form = CategoryForm(request.POST)
-
-        # Have we been provided with a valid form?
-        if form.is_valid():
-            # Save the new category to the database.
-            form.save(commit=True)
-
-            # Now call the index() view.
-            # The user will be shown the homepage.
-            return index(request)
-        else:
-            # The supplied form contained errors - just print them to the terminal.
-            print form.errors
-    else:
-        # If the request was not a POST, display the form to enter details.
-        form = CategoryForm()
-
-    # Bad form (or form details), no form supplied...
-    # Render the form with error messages (if any).
-    return render_to_response('dataportal/add_category.html', {'form': form}, context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+from dataportal.models import UserProfile, UserForm, UserProfileForm, SiteInfo
 
 def register(request):
     # Like before, get the request's context.
@@ -107,18 +62,6 @@ def register(request):
             'dataportal/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def index(request):
