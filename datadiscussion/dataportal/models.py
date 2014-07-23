@@ -2,7 +2,7 @@ from django.db import models
 
 class SiteInfo(models.Model):
   topic = models.CharField(max_length=200)
-  bg = models.ImageField("Background Pic", upload_to="images/", blank=True, null=True)
+  bg = models.ImageField("Background Pic", upload_to="dataportal/static/dataportal/images/", blank=True, null=True)
   ico = models.ImageField("Logo Ico", upload_to="images/", blank=True, null=True)
 
 class Dataset(models.Model):
