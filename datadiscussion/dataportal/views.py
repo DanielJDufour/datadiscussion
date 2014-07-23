@@ -51,13 +51,13 @@ def register(request):
     })
  
     return render_to_response(
-    'register.html',
+    'dataportal/register.html',
     variables,
     )
  
 def register_success(request):
     return render_to_response(
-    'success.html',
+    'dataportal/success.html',
     )
  
 def logout_page(request):
