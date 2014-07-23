@@ -18,6 +18,4 @@ urlpatterns = [
     url('view', views.view, name='view'),
     url('submit', views.submit, name='submit'),
     url('register', views.register, name='register'),
-    url('login', views.login, name='login'),
-    url('logout', views.logout, name='logout'),
 ]
