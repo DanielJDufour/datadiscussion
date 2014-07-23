@@ -26,4 +26,5 @@ urlpatterns = [
             success_url='/'
     )),
     url('^accounts/', include('django.contrib.auth.urls')),
+    url('test', views.test, name='test'),
 ]
