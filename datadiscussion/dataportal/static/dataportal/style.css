@@ -155,7 +155,7 @@ label[for='search-filter-sort-button'] {display: none;}
 .twitter-list {max-width: 300px; width: 100%; display: inline-block; margin: 10px; text-align: center;}
 
 /*RESIZING FOR MOBILE BROWSER OR SMALL WINDOWS*/
-@media (max-width: 700px)
+@media (max-width: 900px)
 {
 	.appear-on-resize{display: inherit;}
 	.disappear-on-resize {display: none;}
