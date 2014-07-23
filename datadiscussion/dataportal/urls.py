@@ -18,7 +18,6 @@ urlpatterns = [
     url('view', views.view, name='view'),
     url('submit', views.submit, name='submit'),
     url('register', views.register, name='register'),
-    url(r'^logout/$', logout_page),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login'), # If user is not login it will redirect to login page
-    url(r'^register/success/$', register_success),
+    url('login', views.login, name='login'),
+    url('logout', views.logout, name='logout'),
 ]
