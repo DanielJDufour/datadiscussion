@@ -224,7 +224,7 @@ label[for='search-filter-sort-button'] {display: none;}
 
 	body.ss-base-body{background: none;}
 
-body{background: none; padding: 0; margin: 0; background: white url("images/bg.jpg") no-repeat right bottom;}
+body{background: none; padding: 0; margin: 0;}
 
 	li {list-style-position: inside;}
 
@@ -894,3 +894,24 @@ o@media print {footer.entry-meta a[rel=bookmark]:link:after,footer.entry-meta a[
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*Index*/
+#welcome-image{background: white url("images/bg.jpg") no-repeat 100% 100%; max-width: 900px; width: 100%; height: 200px;}
+
+
+
+
+
+
+
+
