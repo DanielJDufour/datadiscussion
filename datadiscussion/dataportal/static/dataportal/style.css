@@ -223,7 +223,8 @@ label[for='search-filter-sort-button'] {display: none;}
 
 
 	body.ss-base-body{background: none;}
-	body{background: none;}
+
+body{background: none; padding: 0; margin: 0;}
 
 	li {list-style-position: inside;}
 
