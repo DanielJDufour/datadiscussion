@@ -1,12 +1,16 @@
 from django.conf.urls import url
-    from django.conf.urls import patterns, include, url
-    from dataportal.views import *
+
 
 
 
 from dataportal import views
 
 from django.contrib.auth.views import login, logout
+
+
+from django.conf.urls import patterns, include, url
+from dataportal.views import *
+
 
 
 urlpatterns = [
