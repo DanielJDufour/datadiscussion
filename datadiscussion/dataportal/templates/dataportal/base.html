@@ -1,8 +1,9 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>{{ topic }}Data Discussion</title>
-		<link type = "text/css" rel = "stylesheet" href = "style.css"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'dataportal/style.css' %}" />
 		<link rel = "icon" type = "image/ico" href="logo.ico"/>
 		<!-- Prevents Mobile Device from Shrinking Text -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
