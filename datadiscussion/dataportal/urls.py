@@ -9,6 +9,4 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url('view', views.view, name='view'),
     url('submit', views.submit, name='submit'),
-    url(r'^accounts/login/$',  login),
-    url(r'^accounts/logout/$', logout),
-]
+    url('register', views.register, name='register'),
