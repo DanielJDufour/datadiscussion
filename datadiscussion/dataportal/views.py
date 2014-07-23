@@ -14,4 +14,5 @@ def view(request):
   return HttpResponse("Hello.  You're at the view data page.")
 
 def submit(request):
-  return HttpResponse("Hello.  You're at the submit data page.")
+    topic = SiteInfo.objects.all()[0].topic
+    return render(request, 'dataportal/submit.html', {'topic': topic})
