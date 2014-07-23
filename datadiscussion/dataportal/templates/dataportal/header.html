@@ -29,7 +29,11 @@
 			</div>
 		</div>
 		<div class = "option"><a href="about.html"><div class = "option-text-unselected">About</div></a></div>
-		<div class = "option"><a href=""><div class = "option-text-unselected">Register</div></a></div>
-		<div class = "option"><a href="/dataportal/register"><div class = "option-text-unselected">Sign-in</div></a></div>
+		{% if user.is_authenticated %}
+			<div class = "option"><a href=""><div class = "option-text-unselected">LOGOUT</div></a></div>
+		{% else %}
+			<div class = "option"><a href=""><div class = "option-text-unselected">REGISTER</div></a></div>
+			<div class = "option"><a href="/dataportal/register"><div class = "option-text-unselected">LOGIN</div></a></div>
+		{% endif %}
 	</div>
 </header>
