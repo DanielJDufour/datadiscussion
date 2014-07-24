@@ -4,13 +4,12 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
-
 from django.contrib.auth.models import User
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
-from dataportal.models import UserProfile, UserForm, UserProfileForm, SiteInfo
+
+from dataportal.models import SiteInfo
 
 def test(request):
     return render(request, 'dataportal/test.html')
