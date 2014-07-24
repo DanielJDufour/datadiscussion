@@ -32,7 +32,7 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(username=form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password1'])
+            user = User.objects.create_user(username=form.cleaned_data['username'], email=form.cleaned_data['email'], password=form.cleaned_data['password1'])
             return HttpResponseRedirect('dataportal')
     else:
         form = RegistrationForm()
