@@ -34,4 +34,4 @@ def submit(request):
 def register(request):
     if request.method == "POST":
         User.objects.create(username='username', email='email', password='password')
-    return render(request, 'register.html') 
+    return render(request, 'dataportal/register.html') 
