@@ -10,6 +10,9 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
 
 from dataportal.models import SiteInfo
+from forms import UserForm
+from django.contrib.auth import login
+
 
 def test(request):
     return render(request, 'dataportal/test.html')
@@ -27,41 +30,17 @@ def submit(request):
     return render(request, 'dataportal/submit.html', {'topic': topic})
 
 
-@csrf_protect
-def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+
+
+def lexusadduser(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(username=form.cleaned_data['username'], email='123@example.com', password=form.cleaned_data['password1'])
-            user.first_name = "john"
-            user.last_name = "doe"
-            user.save()
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(new_user)
+            # redirect, or however you want to get to the main view
             return HttpResponseRedirect('/')
     else:
-        form = RegistrationForm()
-   
-    variables = RequestContext(request, {
-    'form': form
-    })
- 
-    return render_to_response(
-    'dataportal/register.html',
-    variables,
-    )
- 
- 
-def register_success(request):
-    return render_to_response(
-    'dataportal/success.html',
-    )
- 
-def logout_page(request):
-    logout(request)
-    return HttpResponseRedirect('/')
- 
-@login_required
-def home(request):
-    return render_to_response(
-    'home.html',
-    { 'user': request.user }
-    )
+        form = UserForm() 
+
+    return render(request, 'register.html', {'form': form}) 
