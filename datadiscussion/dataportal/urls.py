@@ -20,11 +20,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url('view', views.view, name='view'),
     url('submit', views.submit, name='submit'),
-    url('register', CreateView.as_view(
-            template_name='dataportal/register.html',
-            form_class=UserCreationForm,
-            success_url='/'
-    )),
+    url('register', views.register, name='register'),
     url('^accounts/', include('django.contrib.auth.urls')),
     url('test', views.test, name='test'),
 ]
