@@ -1,20 +1,6 @@
-from django.conf.urls import url
-
-
-
-
 from dataportal import views
-
 from django.contrib.auth.views import login, logout
-
-
 from django.conf.urls import patterns, include, url
-from dataportal.views import *
-
-
-from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import UserCreationForm
-
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
