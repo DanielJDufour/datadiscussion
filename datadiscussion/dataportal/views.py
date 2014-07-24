@@ -34,13 +34,5 @@ def submit(request):
 
 def register(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            new_user = User.objects.create_user(**form.cleaned_data)
-            login(new_user)
-            # redirect, or however you want to get to the main view
-            return HttpResponseRedirect('/')
-    else:
-        form = UserForm() 
-
-    return render(request, 'register.html', {'form': form}) 
+        User.objects.create(username='username', email='email', password='password')
+    return render(request, 'register.html') 
