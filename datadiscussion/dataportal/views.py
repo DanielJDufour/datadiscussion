@@ -35,7 +35,8 @@ def register(request):
             user = User.objects.create_user(username=form.cleaned_data['username'], email='123@example.com', password=form.cleaned_data['password1'])
             user.first_name = "john"
             user.last_name = "doe"
-            return HttpResponseRedirect('dataportal')
+            user.save()
+            return HttpResponseRedirect('/')
     else:
         form = RegistrationForm()
    
