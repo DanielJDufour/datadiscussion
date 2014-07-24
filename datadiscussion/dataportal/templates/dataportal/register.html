@@ -4,11 +4,12 @@
 <form method="post" action=".">{% csrf_token %}
   <input type="text" name="username" value="" required="" placeholder="username" maxlength="100">
   </br>
-  <input type="text" name="email" value="" required="" placeholder="email" maxlength="100">
+  <input type="password" name="password1" value="" required="" placeholder="password1" maxlength="100">
   </br>
-  <input type="text" name="password1" value="" required="" placeholder="password1" maxlength="100">
+  <input type="password" name="password2" value="" required="" placeholder="password2" maxlength="100">
   </br>
-  <input type="text" name="password2" value="" required="" placeholder="password2" maxlength="100">
+  <input type="email" name="email" value="" required="" placeholder="email" maxlength="100">
+  </br>
   </br>
   <input type="submit" value="Register" />
 </form>
