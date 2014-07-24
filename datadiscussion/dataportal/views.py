@@ -32,7 +32,7 @@ def submit(request):
 
 
 
-def lexusadduser(request):
+def register(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
