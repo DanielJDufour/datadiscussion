@@ -10,7 +10,6 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
 
 from dataportal.models import SiteInfo
-from forms import UserForm
 from django.contrib.auth import login
 
 
