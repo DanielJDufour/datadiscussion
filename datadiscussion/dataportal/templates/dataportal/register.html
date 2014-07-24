@@ -3,6 +3,10 @@
 {% block content %}
 </br>
 <form method="post" action=".">{% csrf_token %}
+  <input type="text" name="first_name" value="" required="" placeholder="first_name" maxlength="100">
+  </br>
+  <input type="text" name="last_name" value="" required="" placeholder="last_name" maxlength="100">
+  </br>
   <input type="text" name="username" value="" required="" placeholder="username" maxlength="100">
   </br>
   <input type="password" name="password1" value="" required="" placeholder="password1" maxlength="100">
