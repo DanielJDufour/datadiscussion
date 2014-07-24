@@ -5,9 +5,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
-
-
-
+from django.contrib.auth.models import User
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -30,11 +28,6 @@ def submit(request):
     return render(request, 'dataportal/submit.html', {'topic': topic})
 
 
-
-
-
-
-
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -45,9 +38,10 @@ def register(request):
             password=form.cleaned_data['password1'],
             email=form.cleaned_data['email']
             )
-            return HttpResponseRedirect('/register/success/')
+            return HttpResponseRedirect('dataportal')
     else:
         form = RegistrationForm()
+   
     variables = RequestContext(request, {
     'form': form
     })
@@ -56,6 +50,7 @@ def register(request):
     'dataportal/register.html',
     variables,
     )
+ 
  
 def register_success(request):
     return render_to_response(
