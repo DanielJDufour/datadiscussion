@@ -1,0 +1,32 @@
+{% extends "dataportal/base.html" %}
+{% block content %}
+
+	<p>{{ topic }} Data Discussion provides links to data on other websites. Users should consult the terms of use and privacy policies on those other websites.</p>
+	<table><tbody>
+		<tr>
+			<th>Title</th>
+			<th>Source</th>
+			<th>Link</th>
+			<th>Location</th>
+			<th>Theme</th>
+			<th>Format</th>
+			<th>Frequency</th>
+			<th>Strengths</th>
+			<th>Weaknesses</th>
+		</tr>
+		</tr>
+		{% for dataset in datasets %}
+			<tr>
+				<td>{{ dataset.title_in_english }}</td>
+				<td>{{ dataset.source_in_english }}</td>
+				<td><a href="{{ dataset.hyperlink_in_english }}">{{ dataset.hyperlink_in_english }}</a></td>
+				<td><a href="">{{ dataset.location_in_english }}</a></td>
+				<td>{{ dataset.theme_in_english }}</td>
+				<td>{{ dataset.format_in_english }}</td>
+				<td>{{ dataset.frequency_in_english }}</td>
+				<td>{{ dataset.strengths_in_english }}</td>
+				<td>{{ dataset.weaknesses_in_english }}</td>
+			</tr>
+		{% endfor %}
+	</tbody></table>
+{% endblock %}

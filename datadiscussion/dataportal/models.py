@@ -2,24 +2,26 @@ from django.db import models
 
 class SiteInfo(models.Model):
   topic = models.CharField(max_length=200)
+  domain = models.URLField(default='AddYourDomain!!', null=True)
   bg = models.ImageField("Background Pic", upload_to="dataportal/static/dataportal/images/", blank=True, null=True)
   ico = models.ImageField("Logo Ico", upload_to="images/", blank=True, null=True)
 
 class Dataset(models.Model):
   title_in_english = models.CharField(max_length=200)
   source_in_english = models.CharField(max_length=200)
-  hyperlink_in_english = models.URLField(max_length=200)
+  hyperlink_in_english = models.URLField(max_length=200, default='http://')
   location_in_english = models.CharField(max_length=200)
-  location_in_english = models.URLField(max_length=200)
   theme_in_english = models.CharField(max_length=200)
   format_in_english = models.CharField(max_length=200)
-  frequency_in_english = models.TextField()
+  frequency_in_english = models.CharField(max_length=200)
   strengths_in_english = models.TextField()
-  weaknesses_in_english = models.CharField(max_length=200)
+  weaknesses_in_english = models.TextField()
   downloadable = models.NullBooleanField()
   last_updated = models.DateTimeField()
+  def get_model_fields(self):
+    return self._meta.fields
   def __str__(self):
-    return self.title_en  
+    return self.title_in_english  
 
 class Twitter(models.Model):
   dataset = models.ForeignKey(Dataset)

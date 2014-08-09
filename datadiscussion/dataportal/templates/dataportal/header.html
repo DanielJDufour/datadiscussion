@@ -1,23 +1,23 @@
 <header id = "top">
     <div id = "ribbon">
-        <div class = "option"><a href="index.html"><div class = "option-text-selected">Home</div></a></div>
-        <div class = "option"><a href="view.php"><div class = "option-text-unselected disappear-on-resize">View Data</div><div class = "option-text-unselected appear-on-resize">View</div></a>
+        <div class = "option"><a href={% url 'index' %}><div class = "option-text-selected">Home</div></a></div>
+        <div class = "option"><a href={% url 'view_data' %}><div class = "option-text-unselected disappear-on-resize">View Data</div><div class = "option-text-unselected appear-on-resize">View</div></a>
             <div class = "option-second-break"></div>
             <div class = "option-second-group">
-			    <div class="option-second"><a href="view.php"><div class = "option-second-text-unselected">All</div></a></div>
-				<div class="option-second"><a href="gis.html"><div class = "option-second-text-unselected">GIS</div></a></div>
-				<div class="option-second"><a href="social.html"><div class = "option-second-text-unselected">Social</div></a></div>
+			    <div class="option-second"><a href={% url 'view_data' %}><div class = "option-second-text-unselected">All</div></a></div>
+				<div class="option-second"><a href=""><div class = "option-second-text-unselected">GIS</div></a></div>
+				<div class="option-second"><a href=""><div class = "option-second-text-unselected">Social</div></a></div>
 			</div>				
 		</div>
-		<div class = "option"><a href="submit.html"><div class = "option-text-unselected disappear-on-resize">Submit Data</div><div class = "option-text-unselected appear-on-resize">Submit</div></a></div>
-		<div class = "option"><a href="discuss.html"><div class = "option-text-unselected disappear-on-resize">Discuss Data</div><div class = "option-text-unselected appear-on-resize">Discuss</div></a>
+		<div class = "option"><a href={% url 'submit_data' %}><div class = "option-text-unselected disappear-on-resize">Submit Data</div><div class = "option-text-unselected appear-on-resize">Submit</div></a></div>
+		<div class = "option"><a href=""><div class = "option-text-unselected disappear-on-resize">Discuss Data</div><div class = "option-text-unselected appear-on-resize">Discuss</div></a>
 			<div class = "option-second-break"></div>
 			<div class = "option-second-group">
 			    <div class="option-second"><a href="phpbb"><div class = "option-second-text-unselected">Forum</div></a></div>
 				<div class="option-second"><a href="irc.html"><div class = "option-second-text-unselected">IRC</div></a></div>
 			</div>		
 		</div>
-		<div class = "option"><a href="blog"><div class = "option-text-unselected">Blog</div></a>
+		<div class = "option"><a href=""><div class = "option-text-unselected">Blog</div></a>
 			<div class = "option-second-break"></div>
 			<div class = "option-second-group">
 				<div class="option-second"><a href=""><div class = "option-second-text-unselected"><span class = "disappear-on-resize">For </span>Academics</div></a></div>
@@ -28,12 +28,12 @@
 				<div class="option-second"><a href=""><div class = "option-second-text-unselected"><span class = "disappear-on-resize">For </span>Public</div></a></div>
 			</div>
 		</div>
-		<div class = "option"><a href="about.html"><div class = "option-text-unselected">About</div></a></div>
+		<div class = "option"><a href={% url 'about' %}><div class = "option-text-unselected">About</div></a></div>
 		{% if user.is_authenticated %}
-			<div class = "option"><a href=""><div class = "option-text-unselected">LOGOUT</div></a></div>
+			<div class = "option"><a href="{% url 'logout' %}"><div class = "option-text-unselected">Logout</div></a></div>
 		{% else %}
-			<div class = "option"><a href=""><div class = "option-text-unselected">REGISTER</div></a></div>
-			<div class = "option"><a href="/dataportal/register"><div class = "option-text-unselected">LOGIN</div></a></div>
+			<div class = "option"><a href="{% url 'register' %}"><div class = "option-text-unselected">Register</div></a></div>
+			<div class = "option"><a href="{% url 'login' %}"><div class = "option-text-unselected">Login</div></a></div>
 		{% endif %}
 	</div>
 </header>
