@@ -8,8 +8,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader, Context
-from dataportal.models import SiteInfo, Dataset
+from dataportal.models import SiteInfo, Dataset, Theme, DatasetFormat
 from django.contrib.auth import login
+import json
 
 
 def test(request):
@@ -25,8 +26,12 @@ def view_data(request):
   topic = SiteInfo.objects.all()[0].topic
   domain = SiteInfo.objects.all()[0].domain
   datasets = Dataset.objects.all()
+  datasets_json = json.dumps(datasets)
   fields = Dataset.get_model_fields(Dataset.objects.all()[0])
-  return render(request, 'dataportal/view.html', {'topic': topic, 'domain': domain, "fields": fields, "datasets": datasets})
+  locations = Dataset.objects.values_list('location_in_english').distinct()
+  themes = [theme.encode("utf8") for theme in Theme.objects.values_list('theme', flat=True).distinct()]
+  dataset_formats = [dataset_format.encode("utf8") for dataset_format in DatasetFormat.objects.values_list('dataset_format', flat=True).distinct()]
+  return render(request, 'dataportal/view.html', {'topic': topic, 'domain': domain, "fields": fields, 'datasets': datasets, 'locations': locations, 'themes': themes, 'dataset_formats': dataset_formats, 'datasets_json': datasets_json})
 
 def submit_data(request):
     topic = SiteInfo.objects.all()[0].topic

@@ -908,9 +908,26 @@ o@media print {footer.entry-meta a[rel=bookmark]:link:after,footer.entry-meta a[
 
 #welcome-image{background: white url("images/bg.jpg") no-repeat 100% 100%; max-width: 900px; width: 100%; height: 200px;}
 table{width: 95%; table-layout: fixed; margin: 20px auto; padding: 0; box-sizing: border-box;}
-table tr:nth-child(even){background-color: green;}
-table tr:nth-child(odd){background-color: blue;}
-table tr:first-child {background-color: black; color: white; border-top-left-radius: 15px; border-top-right-radius: 15px;}
-table tr th, table tr td{padding: 2px; margin: 0; word-wrap: break-word;}
-table tr th {text-align: center;}
-table tr td {text-align: left;}
+#table tr:nth-child(even) {background-color: #ffcc80;}
+#table tr:nth-child(odd) {background-color: #ffe0b2;}
+table tr:first-child {background-color: #259b24; color: white; border-top-left-radius: 15px; border-top-right-radius: 15px;}
+th, td{padding: 2px; margin: 0; word-wrap: break-word; box-sizing: border-box; vertical-align: top;}
+th {text-align: center;}
+td {text-align: left; height: 25px; overflow: hidden;}
+table a {display: block; text-decoration: none;}
+table a:hover div {background-color: #a3e9a4; transition: background-color 1000ms linear;}
+th div, td div{padding: 15px; border: 0px; margin: 0px;}
+td div{height: 75px; font-size: 10pt; min-height: 75px; background-color: #ffcc80; overflow: hidden; border-radius: 10px; box-shadow: 2px 2px 2px grey;}
+th div{font-size: 12pt;}
+td:hover{box-sizing: border-box; height: auto;}
+
+/*color scheme:
+primary: green
+500#259b24
+100#a3e9a4
+700#0a7e07
+
+secondary: orange
+200#ffcc80
+100#ffe0b2
+400#ffa726

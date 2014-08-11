@@ -1,3 +1,5 @@
+
+
 from django.db import models
 
 class SiteInfo(models.Model):
@@ -11,8 +13,8 @@ class Dataset(models.Model):
   source_in_english = models.CharField(max_length=200)
   hyperlink_in_english = models.URLField(max_length=200, default='http://')
   location_in_english = models.CharField(max_length=200)
-  theme_in_english = models.CharField(max_length=200)
-  format_in_english = models.CharField(max_length=200)
+  themes_in_english = models.ManyToManyField('Theme')
+  formats_in_english = models.ManyToManyField('DatasetFormat')
   frequency_in_english = models.CharField(max_length=200)
   strengths_in_english = models.TextField()
   weaknesses_in_english = models.TextField()
@@ -22,6 +24,20 @@ class Dataset(models.Model):
     return self._meta.fields
   def __str__(self):
     return self.title_in_english  
+
+class Theme(models.Model):
+  theme = models.CharField(max_length=200, null=True)
+  def __str__(self):
+    return self.theme
+  class Meta:
+    ordering = ['theme']
+
+class DatasetFormat(models.Model):
+  dataset_format = models.CharField(max_length=200, null=True)
+  def __str__(self):
+    return self.dataset_format
+  class Meta:
+    ordering = ['dataset_format']
 
 class Twitter(models.Model):
   dataset = models.ForeignKey(Dataset)

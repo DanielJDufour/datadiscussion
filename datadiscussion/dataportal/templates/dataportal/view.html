@@ -1,31 +1,92 @@
 {% extends "dataportal/base.html" %}
 {% block content %}
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script type = "text/javascript">
+      $(function () {
+         var datasets = {{ datasets_json }};
+      });
 
-	<p>{{ topic }} Data Discussion provides links to data on other websites. Users should consult the terms of use and privacy policies on those other websites.</p>
+      $(function () {
+         var div_offsetWidth_old;
+         var div_offsetHeight_old;
+         var resizing = false;
+         $("td").hover(
+            function(){
+               console.log("You just hovered over a td.");
+               td = this;
+               div = td.getElementsByTagName('div')[0];
+               div_offsetWidth_old = div.offsetWidth;
+               div_offsetHeight_old = div.offsetHeight;
+               div_scrollHeight_old = div.scrollHeight;
+               td_scrollHeight_old = td.scrollHeight;
+               td_offsetHeight_old = td.offsetHeight;
+               if (div_scrollHeight_old > div_offsetHeight_old)
+               {
+                  resizing = true;
+                  area = div_scrollHeight_old * div_offsetWidth_old;
+                  new_side = Math.sqrt(area);
+                  margin_left_new = -1 * ((new_side - div_offsetWidth_old) / 2);
+                  margin_top_new = -1 * ((new_side - div_offsetHeight_old) / 2);
+                  $(div).css({'width': new_side, 'position': 'absolute', 'height': "auto", 'margin-left': margin_left_new, 'margin-top': margin_top_new, 'z-index': 99999999});
+                }
+             },
+           function()
+           {
+              if (resizing)
+              {
+                 console.log("You just unhovered over a td.");
+                 $(div).css({'width': 'auto', 'position': 'relative', 'height': div_offsetHeight_old, 'margin-left': 0, 'margin-top': 0, 'z-index': 0});
+                 resizing = false;
+              }
+           }
+         );
+      });
+	</script>
+
+<p style="text-align: center">{{ topic }} Discussion provides links to data on other websites.  Users should consult the terms of use and privacy policies on those other websites.</p>			
+
+<div id = "search-filter-sort-area">
+<b>Enter a Search Term:</b>
+<input type="text" id="filter-term" name="filter-term">		
+
+</br><b>Click which Locations to Display:</b>
+{% for location in locations %}
+<input type='checkbox' id='filter-location-{{ location }}' name='filter-location' checked><label for='filter-location-{{ location }}'>{{ location }}</label>
+{% endfor %}
+						
+</br><b>Click which Themes to Display:</b>
+{% for theme in themes %}
+<input type='checkbox' id='filter-theme-{{ theme }}' name="filter-theme" checked><label for="filter-theme-{{ theme }}">{{ theme }}</label>
+{% endfor %}
+
+</br><b>Click which Formats to Display:</b>
+{% for dataset_format in dataset_formats %}
+<input type="checkbox" id="filter-format-{{ dataset_format }}" name="filter-format" checked><label for="filter-format-{{ dataset_format }}">{{ dataset_format }}</label>{% endfor %}				
+				
 	<table><tbody>
 		<tr>
-			<th>Title</th>
-			<th>Source</th>
-			<th>Link</th>
-			<th>Location</th>
-			<th>Theme</th>
-			<th>Format</th>
-			<th>Frequency</th>
-			<th>Strengths</th>
-			<th>Weaknesses</th>
+			<th><div>Title</div></th>
+			<th><div>Source</div></th>
+			<th><div>Link</div></th>
+			<th><div>Location</div></th>
+			<th><div>Theme</div></th>
+			<th><div>Format</div></th>
+			<th><div>Frequency</div></th>
+			<th><div>Strengths</div></th>
+			<th><div>Weaknesses</div></th>
 		</tr>
 		</tr>
 		{% for dataset in datasets %}
 			<tr>
-				<td>{{ dataset.title_in_english }}</td>
-				<td>{{ dataset.source_in_english }}</td>
-				<td><a href="{{ dataset.hyperlink_in_english }}">{{ dataset.hyperlink_in_english }}</a></td>
-				<td><a href="">{{ dataset.location_in_english }}</a></td>
-				<td>{{ dataset.theme_in_english }}</td>
-				<td>{{ dataset.format_in_english }}</td>
-				<td>{{ dataset.frequency_in_english }}</td>
-				<td>{{ dataset.strengths_in_english }}</td>
-				<td>{{ dataset.weaknesses_in_english }}</td>
+				<td><div>{{ dataset.title_in_english }}</div></td>
+				<td><div>{{ dataset.source_in_english }}</div></td>
+				<td><a href="{{ dataset.hyperlink_in_english }}"><div>{{ dataset.hyperlink_in_english }}</div></a></td>
+				<td><a href=""><div>{{ dataset.location_in_english }}</div></a></td>
+				<td><div>{{ dataset.theme_in_english }}</div></td>
+				<td><div>{{ dataset.format_in_english }}</div></td>
+				<td><div>{{ dataset.frequency_in_english }}</div></td>
+				<td><div>{{ dataset.strengths_in_english }}</div></td>
+				<td><div>{{ dataset.weaknesses_in_english }}</div></td>
 			</tr>
 		{% endfor %}
 	</tbody></table>
