@@ -58,6 +58,14 @@ sudo pip install -e ~/django-trunk/
 git clone http://github.com/danieljdufour/datadiscussion.git ~/datadiscussion
 ```
 
+####Install Tastypie and its dependencies
+sudo pip install python-mimeparse
+sudo pip install python-dateutil
+sudo git clone https://github.com/toastdriven/django-tastypie.git ~/django-tastypie
+sudo pip install ~/django-tastypie
+ln -s ~/django-tastypie/ ~/datadiscussion/datadiscussion/tastypie
+sudo pip install -r ~/django-tastypie/requirements.txt
+
 ####Create Database (db) Tables
 The following command creates the tables needed by the INSTALLED_APPS found in ~/datadiscussion/datadiscussion/datadiscussion/settings.py.  ```sudo -u postgres``` makes it so you run the command as the postgres user, which has a role to access the database. 
 ```
