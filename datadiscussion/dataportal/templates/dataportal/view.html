@@ -1,139 +1,135 @@
 {% extends "dataportal/base.html" %}
 {% block content %}
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   <script type = "text/javascript">
-      var datasets;
-      $(function () {
-         datasets = {% autoescape off %} {{ json }} {% endautoescape %};
-      });
-
-      // filter rows
-      $(function () {
-         var table = document.getElementById("tableOfDatasets");
-         var datasets_length = datasets.length;
-
-         var search_term = $("#searchTerm").value;
-
-         var inputs = $("input");
-
-         //get location terms to filter by
-         var location_terms = new Array();
-         var locations_checked = inputs.find(".filter-location").find(":checked");
-         for (var i = 0; i < locations_checked.length; i++)
-         {
-             location_terms[i] = locations_checked.find("label")[i].text();
-         }
-
-         //get theme terms to filter by
-         var theme_terms = new Array();
-         var themes_checked = inputs.find(".filter-theme").find(":checked");
-         for (var i = 0; i < themes_checked.length; i++)
-         {
-             theme_terms[i] = themes_checked.find("label")[i].text();
-         }
-
-         //get format terms to filter by
-         var format_checked = inputs.find(".filter-format").find(":checked");
-         var format_terms = new Array();
-         for (var i = 0; i < formats_checked.length; i++)
-         {
-             format_terms[i] = formats_checked.find("label")[i].text();
-         }
-
-         match = new Array();
-
-         for (var d = 0; datasets_length; d++)
-         {
-             dataset = datasets[d];
-             search_matches = false;
-             if (searchTerm === "") search_matches = true;
-             else
-             {
-                 for (var key in dataset)
-                 {
-                     if (dataset.hasOwnProperty(key))
-                     {
-                        if(dataset[key].search(search_term) > -1)
-                        {
-                            search_matches = true;
-                            break;
-                        }
-                     }
-                 }
-             }
-             
-             if(search_matches)
-             {
-                 location_matches = false;
-              
-                 for (var location_term in location_terms)
-                 {
-                     if (dataset['location_in_english'].search(location_term) > -1)
-                     {
-                         location_matches = true;
-                         break;
-                     }
-                 }
-
-                 if (location_matches)
-                 {
-                     theme_matches = false;
-
-                     for (var theme_term in theme_terms)
-                     {
-                         if(dataset['theme_in_english'].search(theme_term) > -1)
-                         {
-                             theme_matches = true;
-                             break;
-                         }
-                     }
-
-                     if (theme_matches)
-                     {
-                         format_matches = false;
-
-                         for (var format_term in format_terms)
-                         {
-                             if(dataset['format_in_english'].search(format_term) > -1)
-                             {
-
-                             }
-                     }
-                 }
-             }
-
-
-         } 
-
-
-
-
-
-
-         $("input").on('keyup change',function(){
-             console.log("Row Filtering Activated");
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type = "text/javascript">
+        var datasets;
+        $(function () {
+            datasets = {% autoescape off %} {{ json }} {% endautoescape %};
         
-             match = true
-             //check to see if got a match
-             if (filter-term != "")
-                 for (i = 0; i < datasets.length; i++)
-                 {
-                     for (var key in datasets[i])
-                     {
-                         if(datasets[i].hasOwnProperty(key))
-                         {
-                            if(datasets[i][key].search((filter-term) > -1)
+            // filter rows
+            $("input").on('keyup change',function(){
+                console.log("input keyuped or changed");
+                var tableOfData = document.getElementById("tableOfDatasets");
+                var rows = tableOfData.rows;
+                var numberOfDatasets = datasets.length;
+                console.log("There are a total of " + numberOfDatasets + " datasets");
+                var wordsToFilterBy = $("#searchTerm").val();
+                console.log("We will search for datasets that include the word(s) " + wordsToFilterBy);
+
+                var locationsToFilterBy = new Array();
+                var locationButtonsChecked = $(".filter-location:checked");
+                var locationButtonsCheckedLabels = $(".filter-location:checked + label");
+                for (var i = 0; i < locationButtonsChecked.length; i++)
+                {
+                    locationsToFilterBy.push(locationButtonsCheckedLabels[i].textContent);
+                }
+                console.log("The following locations are selected: " + locationsToFilterBy);
+
+                //get theme terms to filter by
+                var themesToFilterBy = new Array();
+                var themeButtonsChecked = $(".filter-theme:checked");
+                var themeButtonsCheckedLabels = $(".filter-theme:checked + label");
+                for (var i = 0; i < themeButtonsChecked.length; i++)
+                {
+                    themesToFilterBy.push(themeButtonsCheckedLabels[i].textContent);
+                }
+                console.log("The following themes are selected: " + themesToFilterBy);
+
+                //get format terms to filter by
+                var formatsToFilterBy = new Array();
+                var formatButtonsChecked = $(".filter-format:checked");
+                var formatButtonsCheckedLabels = $(".filter-format:checked + label");
+                for (var i = 0; i < formatButtonsChecked.length; i++)
+                {
+                    formatsToFilterBy.push(formatButtonsCheckedLabels[i].textContent);
+                }
+                console.log("The following formats are selected: " + formatsToFilterBy);
+
+                matches = new Array();
+                for (var d = 0; numberOfDatasets-1; d++)
+                {
+                    console.log("filtering dataset with index " + d);
+                    var dataset = datasets[d].fields;
+                    console.log("dataset is " + dataset);
+                    var row = rows[d+1];
+                    var row_jquery = $(row);
+                    var displayThisDataset = false;
+
+                    var search_matches = false;
+                    if (wordsToFilterBy === "") search_matches = true;
+                    else
+                    {
+                        for (var key in dataset)
+                        {
+				console.log("key is " + key);
+                            if (dataset.hasOwnProperty(key))
                             {
-                                table.rows[i].show();
-                                break;
+                                console.log(key);
+                                if(dataset[key].search(wordsToFilterBy) > -1)
+                                {
+                                    search_matches = true;
+                                    break;
+                                }
                             }
+                        }
+                    }
+                 
+                    if(search_matches)
+                    {
+                        location_matches = false;
+                      
+                         for (var location_term in locationsToFilterBy)
+                         {
+                             if (dataset['location_in_english'].search(location_term) > -1)
+                             {
+                                 location_matches = true;
+                                 break;
+                             }
+                         }
+
+                         if (location_matches)
+                         {
+                             theme_matches = false;
+
+                             for (var theme_term in themesToFilterBy)
+                             {
+                                 if(dataset['theme_in_english'].search(theme_term) > -1)
+                                 {
+                                     theme_matches = true;
+                                     break;
+                                 }
+                             }
+
+                             if (theme_matches)
+                             {
+                                 format_matches = false;
+
+                                 for (var format_term in formatButtonsChecked)
+                                 {
+                                if(dataset['format_in_english'].search(format_term) > -1)
+                                     {
+                                        if (row.style.display === "none"){row_jquery.show();}
+                                     }
+                                     else if (row.style.display != "none"){row_jquery.hide();}
+                                 }
+                             }
+                             else
+                             {
+                                 if (row.style.display != "none"){row_jquery.hide();}
+                             }
+                         }
+                         else
+                         {
+                             if (row.style.display != "none"){row_jquery.hide();}
                          }
                      }
-                 } 
-             }
-
-         }):
-      });
+                    else
+                    {
+                        if (row.style.display != "none"){row_jquery.hide();}
+                    }
+                }
+            });
+        });
 
       $(function () {
          var div_offsetWidth_old;
@@ -191,12 +187,12 @@
 						
 </br><b>Click which Themes to Display:</b>
 {% for theme in themes %}
-<input type='checkbox' id='filter-theme-{{ theme }}' name="filter-theme" checked><label for="filter-theme-{{ theme }}">{{ theme }}</label>
+<input type='checkbox' id='filter-theme-{{ theme }}' class="filter-theme" checked><label for="filter-theme-{{ theme }}">{{ theme }}</label>
 {% endfor %}
 
 </br><b>Click which Formats to Display:</b>
 {% for dataset_format in dataset_formats %}
-<input type="checkbox" id="filter-format-{{ dataset_format }}" name="filter-format" checked><label for="filter-format-{{ dataset_format }}">{{ dataset_format }}</label>{% endfor %}				
+<input type="checkbox" id="filter-format-{{ dataset_format }}" class="filter-format" checked><label for="filter-format-{{ dataset_format }}">{{ dataset_format }}</label>{% endfor %}				
 				
 	<table id = 'tableOfDatasets'><tbody>
 		<tr>
@@ -216,9 +212,9 @@
 				<td><div>{{ dataset.title_in_english }}</div></td>
 				<td><div>{{ dataset.source_in_english }}</div></td>
 				<td><a href="{{ dataset.hyperlink_in_english }}"><div>{{ dataset.hyperlink_in_english }}</div></a></td>
-				<td><a href=""><div>{{ dataset.location_in_english }}</div></a></td>
-				<td><div>{{ dataset.theme_in_english }}</div></td>
-				<td><div>{{ dataset.format_in_english }}</div></td>
+				<td><div>{% for location in  dataset.locations_in_english.all %}{% if forloop.first %}{{ location }}{% else %}, {{ location }}{% endif %}{% endfor %}</div></td>
+				<td><div>{% for theme in dataset.themes_in_english.all %}{% if forloop.first %}{{ theme }}{% else %}, {{ theme }}{% endif %}{% endfor %}</div></td>
+				<td><div>{% for dataset_format in dataset.formats_in_english.all %}{% if forloop.first %}{{ dataset_format }}{% else %}, {{ dataset_format }}{% endif %}{% endfor %}</div></td>
 				<td><div>{{ dataset.frequency_in_english }}</div></td>
 				<td><div>{{ dataset.strengths_in_english }}</div></td>
 				<td><div>{{ dataset.weaknesses_in_english }}</div></td>

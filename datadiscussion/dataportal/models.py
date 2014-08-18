@@ -13,8 +13,9 @@ class SiteInfo(models.Model):
 class Dataset(models.Model):
   title_in_english = models.CharField(max_length=200, verbose_name="title")
   source_in_english = models.CharField(max_length=200, verbose_name="source")
-  hyperlink_in_english = models.URLField(max_length=200, verbose_name="hyperlink",  default='http://')
-  location_in_english = models.CharField(max_length=200, verbose_name="location")
+  hyperlink_in_english = models.URLField(max_length=200, verbose_name="hyperlink", default='http://')
+  locations_in_english = models.ManyToManyField("Location", verbose_name="location")
+  locations_in_english_string = models.CharField(max_length=200, default='', null=True, blank=True)
   themes_in_english = models.ManyToManyField('Theme', verbose_name="theme")
   formats_in_english = models.ManyToManyField('DatasetFormat', verbose_name="format")
   frequency_in_english = models.CharField(max_length=200, verbose_name="frequency")
@@ -22,6 +23,24 @@ class Dataset(models.Model):
   weaknesses_in_english = models.TextField(verbose_name="weaknesses")
   downloadable = models.NullBooleanField(verbose_name="downloadable")
   last_updated = models.DateTimeField(verbose_name="last_updated")
+
+  def convertListToString(self, elements):
+    converted = ""
+    firstElement = True
+    for element in elements:
+      if firstElement:
+        converted += element.title
+        firstElement = False
+      else:
+        converted += ", " + element.title
+
+    return converted
+
+  def save(self):
+    self.locations_in_english_string = self.convertListToString(self.locations_in_english.all())
+    self.themes_in_english_string = self.convertListToString(self.themes_in_english.all())
+    self.formats_in_english_string = self.convertListToString(self.formats_in_english.all())
+    super(Dataset, self).save()
 
   def get_model_fields(self):
     return self._meta.fields
@@ -44,20 +63,26 @@ class Dataset(models.Model):
     return self.title_in_english  
 
 
+class Location(models.Model):
+  title = models.CharField(max_length=200, null=True)
+  def __str__(self):
+    return self.title
+  class Meta:
+    ordering = ['title']
 
 class Theme(models.Model):
-  theme = models.CharField(max_length=200, null=True)
+  title = models.CharField(max_length=200, null=True)
   def __str__(self):
-    return self.theme
+    return self.title
   class Meta:
-    ordering = ['theme']
+    ordering = ['title']
 
 class DatasetFormat(models.Model):
-  dataset_format = models.CharField(max_length=200, null=True)
+  title = models.CharField(max_length=200, null=True)
   def __str__(self):
-    return self.dataset_format
+    return self.title
   class Meta:
-    ordering = ['dataset_format']
+    ordering = ['title']
 
 class Twitter(models.Model):
   dataset = models.ForeignKey(Dataset)
