@@ -27,13 +27,11 @@ def view_data(request):
   domain = SiteInfo.objects.all()[0].domain
   datasets = Dataset.objects.all()
   json = serializers.serialize('json', datasets)
-  json = json.replace('&',"X")
   fields = Dataset.get_model_fields(Dataset.objects.all()[0])
-  fields_filterable = Dataset.get_filterable_fields(Dataset.objects.all()[0])
   locations = [location.encode("utf8") for location in Location.objects.values_list('title', flat=True).distinct()]
   themes = [theme.encode("utf8") for theme in Theme.objects.values_list('title', flat=True).distinct()]
   dataset_formats = [dataset_format.encode("utf8") for dataset_format in DatasetFormat.objects.values_list('title', flat=True).distinct()]
-  return render(request, 'dataportal/view.html', {'topic': topic, 'domain': domain, "fields": fields, 'datasets': datasets, 'locations': locations, 'themes': themes, 'dataset_formats': dataset_formats, 'json': json, 'fields_filterable': fields_filterable})
+  return render(request, 'dataportal/view.html', {'topic': topic, 'domain': domain, "fields": fields, 'datasets': datasets, 'locations': locations, 'themes': themes, 'dataset_formats': dataset_formats, 'json': json})
 
 def submit_data(request):
     topic = SiteInfo.objects.all()[0].topic

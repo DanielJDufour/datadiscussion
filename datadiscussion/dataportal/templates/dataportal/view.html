@@ -174,12 +174,6 @@
 <b>Enter a Search Term:</b>
 <input type="text" id="searchTerm" name="searchTerm">		
 
-{% for field in fields_filterable %}
-</br><b>Click which {{ field.name }} to Display:
-
-{% endfor %}
-
-
 </br><b>Click which Locations to Display:</b>
 {% for location in locations %}
 <input type='checkbox' id='filter-location-{{ location }}' class='filter-location' checked><label for='filter-location-{{ location }}'>{{ location }}</label>
@@ -209,15 +203,15 @@
 		</tr>
 		{% for dataset in datasets %}
 			<tr>
-				<td><div>{{ dataset.title_in_english }}</div></td>
-				<td><div>{{ dataset.source_in_english }}</div></td>
-				<td><a href="{{ dataset.hyperlink_in_english }}"><div>{{ dataset.hyperlink_in_english }}</div></a></td>
-				<td><div>{% for location in  dataset.locations_in_english.all %}{% if forloop.first %}{{ location }}{% else %}, {{ location }}{% endif %}{% endfor %}</div></td>
-				<td><div>{% for theme in dataset.themes_in_english.all %}{% if forloop.first %}{{ theme }}{% else %}, {{ theme }}{% endif %}{% endfor %}</div></td>
-				<td><div>{% for dataset_format in dataset.formats_in_english.all %}{% if forloop.first %}{{ dataset_format }}{% else %}, {{ dataset_format }}{% endif %}{% endfor %}</div></td>
-				<td><div>{{ dataset.frequency_in_english }}</div></td>
-				<td><div>{{ dataset.strengths_in_english }}</div></td>
-				<td><div>{{ dataset.weaknesses_in_english }}</div></td>
+				<td><div>{{ dataset.title_en }}</div></td>
+				<td><div>{{ dataset.source_en }}</div></td>
+				<td><a href="{{ dataset.hyperlink_en }}"><div>{{ dataset.hyperlink_en }}</div></a></td>
+				<td><div>{{ dataset.locations_en_string }}</div></td>
+				<td><div>{{ dataset.themes_en_string }}</div></td>
+				<td><div>{{ dataset.formats_en_string }}</div></td>
+				<td><div>{{ dataset.frequency_en }}</div></td>
+				<td><div>{{ dataset.strengths_en }}</div></td>
+				<td><div>{{ dataset.weaknesses_en }}</div></td>
 			</tr>
 		{% endfor %}
 	</tbody></table>
