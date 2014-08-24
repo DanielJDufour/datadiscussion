@@ -5,16 +5,15 @@
 sudo apt-get update
 ```
 
-####Install Packages That We'll Use Later
+####Install Required Packages
 ```
-sudo apt-get install -y curl vim git
+sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip
 ```
+curl: is used to download form th e
+python-pip: is used to install python packages
 
 ####Install PostgreSQL
 libpq-dev and postgresql-server-dev-X.Y are needed in order to install psycopg2 later
-```
-sudo apt-get install -y postgresql libpq-dev postgresql-server-dev-all
-```
 
 ####Create Database
 You will now create the databse that the Django app will use.  The database is called datadiscussion.
@@ -22,17 +21,6 @@ You will now create the databse that the Django app will use.  The database is c
 sudo -u postgres createdb datadiscussion;
 ```
 
-
-###Install Pyton
-It might already be installed.  If that's so, no worries.
-```
-sudo apt-get -y install python python-dev;
-```
-
-####Download Pip
-Pip will be used to make the django code importable into Python
-```
-sudo apt-get -y install python-pip
 ```
 
 ###Install Psycopg
