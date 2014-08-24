@@ -25,8 +25,6 @@ You will now create the databse that the Django app will use.  The database is c
 sudo -u postgres createdb datadiscussion;
 ```
 
-```
-
 ###Install Psycopg
 Psycopg is a PostgreSQL database adapater for Python
 ```
